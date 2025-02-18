@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Love Journey for Faya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Basic reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #ffecd2, #fcb69f);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+      padding: 20px;
+    }
+    .container {
+      max-width: 600px;
+      width: 100%;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      text-align: center;
+      padding: 20px;
+      position: relative;
+      cursor: pointer;
+    }
+    .container img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+      object-fit: contain; /* Ensures the whole image is visible */
+      max-height: 300px;
+      opacity: 0;
+      animation: fadeInImage 1s forwards;
+    }
+    @keyframes fadeInImage {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .message {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #333;
+      opacity: 0;
+      animation: fadeInText 1s forwards;
+    }
+    @keyframes fadeInText {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .instruction {
+      font-size: 0.9em;
+      color: #666;
+      margin-top: 10px;
+    }
+    @media (max-width: 600px) {
+      .container { padding: 15px; }
+      .message { font-size: 1em; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="container">
+    <img id="loveImage" src="Faya1.jpeg" alt="Love Image">
+    <div class="message" id="loveMessage">Faya, from the moment we connected, my world started to glow.</div>
+    <div class="instruction">Tap anywhere for the next message</div>
+  </div>
+  <script>
+    // Arrays of messages and corresponding images (Faya1.jpeg, Faya2.jpeg, etc.)
+    const messages = [
+      "Faya, from the moment we connected, my world started to glow.",
+      "Your smile brings light to every dark corner of my heart.",
+      "In your eyes, I see a universe of endless love and dreams.",
+      "Every heartbeat sings a melody of our unique journey together.",
+      "Faya, you are the love that makes my life complete, always and forever."
+    ];
+    
+    const images = [
+      "Faya1.jpeg",
+      "Faya2.jpeg",
+      "Faya3.jpeg",
+      "Faya4.jpeg",
+      "Faya5.jpeg"
+    ];
+    
+    let currentIndex = 0;
+    
+    const container = document.getElementById('container');
+    const loveImage = document.getElementById('loveImage');
+    const loveMessage = document.getElementById('loveMessage');
+    
+    function showNext() {
+      currentIndex = (currentIndex + 1) % messages.length;
+      
+      // Reset animations by setting opacity to 0 and removing animation
+      loveImage.style.opacity = 0;
+      loveMessage.style.opacity = 0;
+      loveImage.style.animation = 'none';
+      loveMessage.style.animation = 'none';
+      
+      // Update content
+      loveImage.src = images[currentIndex];
+      loveMessage.textContent = messages[currentIndex];
+      
+      // Force reflow to restart the animations
+      void loveImage.offsetWidth;
+      void loveMessage.offsetWidth;
+      
+      loveImage.style.animation = 'fadeInImage 1s forwards';
+      loveMessage.style.animation = 'fadeInText 1s forwards';
+    }
+    
+    container.addEventListener('click', showNext);
+  </script>
+  <button onclick="window.location.href='final.html'">See Final Message</button>
+</body>
+</html>

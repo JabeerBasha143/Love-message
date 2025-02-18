@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Secret Message for Faya</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Basic reset */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #fbc2eb, #a6c1ee);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #333;
+      cursor: pointer;
+      padding: 20px;
+    }
+    .secret-container {
+      max-width: 600px;
+      padding: 20px;
+    }
+    .instruction {
+      font-size: 1.5em;
+      margin-bottom: 20px;
+    }
+    .secret-message {
+      font-size: 2em;
+      color: #e74c3c;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .secret-message.visible {
+      opacity: 1;
+    }
+    .proceed-button {
+      display: none;
+      margin-top: 30px;
+      padding: 10px 20px;
+      background: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .proceed-button:hover {
+      background: #c0392b;
+    }
+    .proceed-button.visible {
+      display: inline-block;
+    }
+  </style>
+</head>
+<body>
+  <div class="secret-container">
+    <div class="instruction">Tap anywhere to reveal your secret message</div>
+    <div class="secret-message" id="secretMessage">Hi Faya</div>
+    <button class="proceed-button" id="proceedButton" onclick="window.location.href='message.html'">Open Love Message</button>
+  </div>
+  
+  <script>
+    document.body.addEventListener('click', function() {
+      const secretMessage = document.getElementById('secretMessage');
+      const proceedButton = document.getElementById('proceedButton');
+      secretMessage.classList.add('visible');
+      proceedButton.classList.add('visible');
+    }, { once: true });
+  </script>
+</body>
+</html>
